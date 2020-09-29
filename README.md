@@ -14,7 +14,7 @@ Create a redis instanance using package [redis](https://www.npmjs.com/package/re
 Exemple:
 
 ```javascript
-const { RedisCache } = require('../dist')
+const { createClient } = require('redis')
 
 const redis = createClient({
   host: 'localhost',
@@ -29,6 +29,7 @@ const redis = createClient({
 Then create a redis-on-cache instance passing redis instance:
 
 ```javascript
+const { RedisCache } = require('cache-on-redis')
 const cache = new RedisCache(redis)
 ```
 

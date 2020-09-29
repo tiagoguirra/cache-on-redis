@@ -1,5 +1,5 @@
 const { createClient } = require('redis')
-const { RedisCache } = require('../dist')
+const { RedisCache } = require('cache-on-redis')
 
 const redis = createClient({
   host: 'localhost',
