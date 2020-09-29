@@ -1,0 +1,36 @@
+{
+  "name": "cache-on-redis",
+  "version": "0.0.2",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "ISC",
+  "description": "A simple redis cache library",
+  "author": {
+    "email": "tiagobg_bg@hotmail.com",
+    "name": "Tiago Guirra"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepublish": "npm run build"
+  },
+  "dependencies": {
+    "apisauce": "^1.0.3",
+    "axios": "^0.19.0",
+    "lodash": "^4.17.15",
+    "uuid": "^3.3.3"
+  },
+  "devDependencies": {
+    "@types/redis": "^2.8.27",
+    "i": "^0.3.6",
+    "npm": "^6.10.1",
+    "tslint": "^5.18.0",
+    "tslint-config-standard": "^8.0.1",
+    "tslint-jest": "^1.0.5",
+    "typedoc": "^0.15.3",
+    "typescript": "^3.5.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tiagoguirra/cache-on-redis"
+  }
+}
