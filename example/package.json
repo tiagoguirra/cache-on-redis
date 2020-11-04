@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "cache-on-redis": "^0.0.2"
+    "cache-on-redis": "^0.0.5"
   },
   "devDependencies": {
     "@types/redis": "^2.8.27"

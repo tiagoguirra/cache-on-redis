@@ -14,6 +14,13 @@
   dependencies:
     "@types/node" "*"
 
+cache-on-redis@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/cache-on-redis/-/cache-on-redis-0.0.5.tgz#4b460f8e2d6e15934f93694647b1c05b50cdc4a5"
+  integrity sha512-hUSdtu/s4MFbu5iV/9lQIecVZzkqaVsNxsotG5V34MvvZowNfdX6guiTwfG6MARxpgRLhouGT++rErGSgQpsvA==
+  dependencies:
+    redis "^3.0.2"
+
 denque@^1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/denque/-/denque-1.4.1.tgz#6744ff7641c148c3f8a69c307e51235c1f4a37cf"
