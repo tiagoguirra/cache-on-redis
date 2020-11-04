@@ -1,6 +1,6 @@
 {
   "name": "cache-on-redis",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "license": "ISC",
@@ -25,5 +25,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/tiagoguirra/cache-on-redis"
+  },
+  "dependencies": {
+    "redis": "^3.0.2"
   }
 }

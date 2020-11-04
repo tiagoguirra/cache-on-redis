@@ -10,13 +10,11 @@ $ npm install cache-on-redis
 
 ## Usage
 
-Create a redis instanance using package [redis](https://www.npmjs.com/package/redis)
-Exemple:
+Then create a redis-on-cache instance passing redis options:
 
 ```javascript
-const { createClient } = require('redis')
-
-const redis = createClient({
+const { RedisCache } = require('cache-on-redis')
+const cache = new RedisCache({
   host: 'localhost',
   port: 6379,
   connect_timeout: 3600000,
@@ -24,13 +22,6 @@ const redis = createClient({
     return 2000
   },
 })
-```
-
-Then create a redis-on-cache instance passing redis instance:
-
-```javascript
-const { RedisCache } = require('cache-on-redis')
-const cache = new RedisCache(redis)
 ```
 
 ##### Set cache value

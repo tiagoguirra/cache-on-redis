@@ -1,23 +1,23 @@
-import { RedisClient } from 'redis'
+import { RedisClient, createClient, ClientOpts } from 'redis'
 
 export class RedisCache {
   private Client: RedisClient
   private expireTime: number
   private keyPrefix: string
   constructor(
-    client: RedisClient,
+    redisOptions: ClientOpts,
     options?: { key_prefix?: string; expire_time?: number }
   ) {
-    this.Client = client
     this.keyPrefix = options ? options.key_prefix || '' : ''
     this.expireTime = options ? options.expire_time || 3600 : 3600
+    this.Client = createClient(redisOptions)
   }
-  private makeKay(key: string) {
+  private makeKey(key: string) {
     return `${this.keyPrefix || 'cache'}_${key}`
   }
   set(key: string, value: string, expireAt?: number): Promise<void> {
     return new Promise((resolve, reject) => {
-      const cacheKey = this.makeKay(key)
+      const cacheKey = this.makeKey(key)
       this.Client.set(cacheKey, value, (err) => {
         if (err) {
           reject(err)
@@ -39,7 +39,7 @@ export class RedisCache {
   }
   get(key: string): Promise<string | null> {
     return new Promise((resolve, reject) => {
-      const cacheKey = this.makeKay(key)
+      const cacheKey = this.makeKey(key)
       this.Client.get(cacheKey, (err, data) => {
         if (err) {
           reject(err)
@@ -58,7 +58,7 @@ export class RedisCache {
   }
   invalidate(key: string): Promise<void> {
     return new Promise((resolve, reject) => {
-      const cacheKey = this.makeKay(key)
+      const cacheKey = this.makeKey(key)
       this.Client.del(cacheKey, (err) => {
         if (err) {
           reject(err)

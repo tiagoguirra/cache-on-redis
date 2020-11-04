@@ -1,18 +1,19 @@
-const { createClient } = require('redis')
 const { RedisCache } = require('cache-on-redis')
 
-const redis = createClient({
-  host: 'localhost',
-  port: 6379,
-  connect_timeout: 3600000,
-  retry_strategy: (options) => {
-    return 2000
+const cache = new RedisCache(
+  {
+    host: 'localhost',
+    port: 6379,
+    connect_timeout: 3600000,
+    retry_strategy: (options) => {
+      return 2000
+    },
   },
-})
-const cache = new RedisCache(redis, {
-  key_prefix: 'cache_example',
-  expire_time: 10,
-})
+  {
+    key_prefix: 'cache_example',
+    expire_time: 10,
+  }
+)
 
 const run = async () => {
   console.log('Save cache')
