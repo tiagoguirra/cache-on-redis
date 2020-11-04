@@ -1,6 +1,6 @@
 import { RedisClient, createClient, ClientOpts } from 'redis'
 
-export class RedisCache {
+export class CacheOnRedis {
   private Client: RedisClient
   private expireTime: number
   private keyPrefix: string
@@ -69,3 +69,4 @@ export class RedisCache {
     })
   }
 }
+export default CacheOnRedis

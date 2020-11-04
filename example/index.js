@@ -1,6 +1,6 @@
-const { RedisCache } = require('cache-on-redis')
+const { CacheOnRedis } = require('cache-on-redis')
 
-const cache = new RedisCache(
+const cache = new CacheOnRedis(
   {
     host: 'localhost',
     port: 6379,

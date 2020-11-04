@@ -13,8 +13,8 @@ $ npm install cache-on-redis
 Then create a redis-on-cache instance passing redis options:
 
 ```javascript
-const { RedisCache } = require('cache-on-redis')
-const cache = new RedisCache({
+const { CacheOnRedis } = require('cache-on-redis')
+const cache = new CacheOnRedis({
   host: 'localhost',
   port: 6379,
   connect_timeout: 3600000,
@@ -67,7 +67,7 @@ await cache.invalidate('myCacheKey')
 
 The cache instance acceps a options argument:
 
-- `RedisCache(redisInstance,options)`
+- `CacheOnRedis(redisInstance,options)`
 
 | Property    | Default | Description                                                    |
 | ----------- | ------- | -------------------------------------------------------------- |
