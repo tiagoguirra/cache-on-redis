@@ -1,4 +1,4 @@
-const { CacheOnRedis } = require('cache-on-redis')
+const { CacheOnRedis } = require('../dist/index')
 
 const cache = new CacheOnRedis(
   {
@@ -24,7 +24,7 @@ const run = async () => {
   console.log('Get cache')
   const value = await cache.getJson('first')
   console.log(value)
-  await cache.invalidate('first')
+  await cache.invalidate('fi*',true)
 
   console.log('Clear cache')
   const valueClear = await cache.getJson('first')

@@ -15,6 +15,9 @@ export class CacheOnRedis {
   private makeKey(key: string) {
     return `${this.keyPrefix || 'cache'}_${key}`
   }
+  private unmakeKey(key: string) {
+    return key.replace(`${this.keyPrefix || 'cache'}_`, '')
+  }
   set(key: string, value: string, expireAt?: number): Promise<void> {
     return new Promise((resolve, reject) => {
       const cacheKey = this.makeKey(key)
@@ -56,16 +59,28 @@ export class CacheOnRedis {
     }
     return null
   }
-  invalidate(key: string): Promise<void> {
+  invalidate(key: string, pattern: boolean = false): Promise<void> {
     return new Promise((resolve, reject) => {
       const cacheKey = this.makeKey(key)
-      this.Client.del(cacheKey, (err) => {
-        if (err) {
-          reject(err)
-        } else {
-          resolve()
-        }
-      })
+      if (pattern) {
+        this.Client.keys(cacheKey, (err, keys: string[]) => {
+          if (err) {
+            reject(err)
+          } else {
+            Promise.all(keys.map((key) => this.invalidate(this.unmakeKey(key))))
+              .then(() => resolve())
+              .catch((err) => reject(err))
+          }
+        })
+      } else {
+        this.Client.del(cacheKey, (err) => {
+          if (err) {
+            reject(err)
+          } else {
+            resolve()
+          }
+        })
+      }
     })
   }
 }
