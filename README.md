@@ -1,6 +1,6 @@
-# redis-on-cache
+# cache-on-redis
 
-Redis on cache is a simple library to temporary storage cache using node.js.
+Cache on redis is a simple library to temporary storage cache using node.js and redis.
 
 ## Install
 
@@ -10,7 +10,7 @@ $ npm install cache-on-redis
 
 ## Usage
 
-Then create a redis-on-cache instance passing redis options:
+Then create a cache-on-redis instance passing redis options:
 
 ```javascript
 const { CacheOnRedis } = require('cache-on-redis')
@@ -57,10 +57,16 @@ await cache.get('myCacheKey')
 
 ##### Invalidate
 
-To clear or invalidate cache
+To invalidate cache
 
 ```javascript
 await cache.invalidate('myCacheKey')
+```
+
+To invalidate cache using patterns
+
+```javascript
+await cache.invalidate('myCa*', true)
 ```
 
 #### `options` object properties
@@ -73,5 +79,3 @@ The cache instance acceps a options argument:
 | ----------- | ------- | -------------------------------------------------------------- |
 | key_prefix  | cache   | Cache key prefix, every cache storage will contain this prefix |
 | expire_time | 3600    | Cache expiration time in secconds                              |
-
-
